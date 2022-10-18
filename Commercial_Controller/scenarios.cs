@@ -16,9 +16,11 @@ namespace Commercial_Controller
             this.floorRequests = _floorRequests;
         }
     }
+   
     public class Scenarios
     {
         Battery battery = new Battery(1, 4, 60, 6, 5);
+        
 
         public Column moveAllElevators(Column column) {
             
@@ -27,7 +29,7 @@ namespace Commercial_Controller
                
                 while (column.elevatorsList[i].floorRequestsList.Count != 0)
                 {
-                     Console.WriteLine(column.elevatorsList[i].currentFloor);
+                    Console.WriteLine(i + "currentFloor: "+column.elevatorsList[i].currentFloor);
                     column.elevatorsList[i].move();
                 }
             }
@@ -53,10 +55,9 @@ namespace Commercial_Controller
             ElevatorDetails elevator2 = new ElevatorDetails(3,"up","moving",  new List<int>{15});
             ElevatorDetails elevator3 = new ElevatorDetails(13,"down","moving",new List<int>{1});
             ElevatorDetails elevator4 = new ElevatorDetails(15,"down","moving", new List<int>{2});
-            ElevatorDetails elevator5 = new ElevatorDetails(6,"down","moving", new List<int>{2});
+            ElevatorDetails elevator5 = new ElevatorDetails(6,"down","moving", new List<int>{1});
             List<ElevatorDetails> elevatorDetails = new List<ElevatorDetails>{elevator1,elevator2,elevator3,elevator4,elevator5};
             battery.columnsList[1] = setupElevators(column, elevatorDetails);
-
             (Column chosenColumn, Elevator chosenElevator) = battery.assignElevator(20, "up");
             chosenColumn = moveAllElevators(chosenColumn);
             return (chosenColumn, chosenElevator);
@@ -72,7 +73,6 @@ namespace Commercial_Controller
             ElevatorDetails elevator5 = new ElevatorDetails(39,"down","moving", new List<int>{1});
             List<ElevatorDetails> elevatorDetails = new List<ElevatorDetails>{elevator1,elevator2,elevator3,elevator4,elevator5};
             battery.columnsList[2] = setupElevators(column, elevatorDetails);
-
             (Column chosenColumn, Elevator chosenElevator) = battery.assignElevator(36, "up");
             chosenColumn = moveAllElevators(chosenColumn);
             return (chosenColumn, chosenElevator);
@@ -90,6 +90,7 @@ namespace Commercial_Controller
             setupElevators(column, elevatorDetails);
 
             Elevator chosenElevator = column.requestElevator(54, "down");
+
             column = moveAllElevators(column);
             return (column, chosenElevator);
         }
@@ -106,6 +107,7 @@ namespace Commercial_Controller
             setupElevators(column, elevatorDetails);
 
             Elevator chosenElevator = column.requestElevator(-3, "up");
+
             column = moveAllElevators(column);
             return (column, chosenElevator);
         }
