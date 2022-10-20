@@ -51,9 +51,7 @@ namespace Commercial_Controller
                 }
                 status = "stopped";
                 completedRequestsList.Add(destination);
-                Console.WriteLine("completedRequestsList" + completedRequestsList.Count);
-                Console.WriteLine("completed" + (completedRequestsList.Contains(destination)));
-
+   
                 floorRequestsList.RemoveAt(0);
 
         }
@@ -75,7 +73,7 @@ namespace Commercial_Controller
             if (floorRequestsList.Contains(_requestedFloor) == false)
             {
                 floorRequestsList.Add(_requestedFloor);
-                Console.WriteLine(floorRequestsList[0] + "AddNewRequest");
+                
             }
             if (currentFloor < _requestedFloor)
             {

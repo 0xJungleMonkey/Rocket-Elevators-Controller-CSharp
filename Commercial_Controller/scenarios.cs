@@ -29,7 +29,7 @@ namespace Commercial_Controller
                
                 while (column.elevatorsList[i].floorRequestsList.Count != 0)
                 {
-                    Console.WriteLine(i + "currentFloor: "+column.elevatorsList[i].currentFloor);
+
                     column.elevatorsList[i].move();
                 }
             }

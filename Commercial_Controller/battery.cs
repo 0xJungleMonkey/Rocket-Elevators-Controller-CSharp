@@ -57,13 +57,13 @@ namespace Commercial_Controller
                     }
                 }
                 servedFloors.Add(1);
-                // Console.WriteLine(servedFloors.Count);
+                
                 Column column = new Column(columnID, _amountOfFloors, _amountOfElevatorPerColumn, servedFloors, false);
                  
                  columnsList.Add(column);
                 
                  columnID ++;
-                // Console.WriteLine(columnsList.Count);
+                
             }
             
             
@@ -111,15 +111,12 @@ namespace Commercial_Controller
         {
             
             Column column = findBestColumn(_requestedFloor);
-            Console.WriteLine(column.ID);
-            // column.elevatorsList.ForEach(i => Console.Write("{0}\t", i.ID));
-
+            
             Elevator elevator = column.findElevator(1, _direction);
             elevator.addNewRequest(1);
             elevator.move();
             elevator.addNewRequest(_requestedFloor);
-            Console.WriteLine("elevator sent" + elevator.ID);
-
+            
             elevator.move();
            
             return (column, elevator);

@@ -82,11 +82,7 @@ namespace Commercial_Controller
             if (_requestedFloor == 1)
             { 
                 foreach(Elevator elevator in elevatorsList){
-                    
-                    // Console.WriteLine(elevator.ID);
-                    // Console.WriteLine(elevator.status);
-                    // Console.WriteLine((elevator.direction =="down"));
-
+                
                     if (elevator.currentFloor == 1 && elevator.status =="stopped")
                     {
                         bestElevatorInformations = checkIfElevatorIsBetter(1, elevator,bestScore, refereneceGap, bestElevator, _requestedFloor);
@@ -101,7 +97,7 @@ namespace Commercial_Controller
                     }
                     else if (1 < elevator.currentFloor && elevator.direction =="down")
                     {
-                        // Console.WriteLine("mewo");
+                       
                         bestElevatorInformations = checkIfElevatorIsBetter(3, elevator,bestScore, refereneceGap, bestElevator, _requestedFloor);
                     }
                     else if (elevator.status =="idle")
@@ -109,15 +105,13 @@ namespace Commercial_Controller
                         bestElevatorInformations = checkIfElevatorIsBetter(4, elevator,bestScore, refereneceGap, bestElevator, _requestedFloor);
                     }
                     else {
-                        // Console.WriteLine("meow2");
+                        
                         bestElevatorInformations = checkIfElevatorIsBetter(5, elevator,bestScore, refereneceGap, bestElevator, _requestedFloor);
                     }
                 bestElevator = bestElevatorInformations.Item1;
             bestScore = bestElevatorInformations.Item2;
             refereneceGap = bestElevatorInformations.Item3;
-            // Console.WriteLine("Wow" + bestElevator.ID);
-            // Console.WriteLine(bestScore);
-            // Console.WriteLine(refereneceGap);
+            
                 }
             }
             else 
@@ -146,9 +140,7 @@ namespace Commercial_Controller
                 bestElevator = bestElevatorInformations.Item1;
             bestScore = bestElevatorInformations.Item2;
             refereneceGap = bestElevatorInformations.Item3;
-            // Console.WriteLine("Wow" + bestElevator.ID);
-            // Console.WriteLine(bestScore);
-            // Console.WriteLine(refereneceGap);
+            
                 }
             }
             
@@ -161,7 +153,6 @@ namespace Commercial_Controller
                 bestScore = scoreToCheck;
                 bestElevator = newElevator;
                 referenceGap = Math.Abs(newElevator.currentFloor - floor);
-                // Console.WriteLine(referenceGap);
             }
             else if (bestScore == scoreToCheck){
                 int gap = Math.Abs(newElevator.currentFloor - floor);
@@ -171,10 +162,6 @@ namespace Commercial_Controller
                 }
             }
             Tuple <Elevator,int,int> bestEleInfo = new Tuple<Elevator,int,int> (bestElevator,bestScore,referenceGap);
-            // Console.WriteLine(bestEleInfo.Item1.ID);
-            // Console.WriteLine(bestEleInfo.Item2);
-            // Console.WriteLine(bestEleInfo.Item3);
-
             return  bestEleInfo;
         }
         
